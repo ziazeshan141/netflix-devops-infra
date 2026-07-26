@@ -24,3 +24,15 @@ enable_nat_gateway = true
 additional_tags = {
   Owner = "DevOps"
 }
+
+cluster_name = "netflix-eks"
+
+kubernetes_version = "1.33"
+
+node_instance_type = "t3.medium"
+
+desired_size = 3
+
+min_size = 2
+
+max_size = 5

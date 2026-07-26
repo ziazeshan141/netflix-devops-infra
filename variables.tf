@@ -32,3 +32,27 @@ variable "enable_nat_gateway" {
 
 variable "additional_tags" {
   type = map(string)
+
+variable "cluster_name" {
+  type = string
+}
+
+variable "kubernetes_version" {
+  type = string
+}
+
+variable "node_instance_type" {
+  type = string
+}
+
+variable "desired_size" {
+  type = number
+}
+
+variable "min_size" {
+  type = number
+}
+
+variable "max_size" {
+  type = number
+}
