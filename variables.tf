@@ -32,6 +32,7 @@ variable "enable_nat_gateway" {
 
 variable "additional_tags" {
   type = map(string)
+}
 
 variable "cluster_name" {
   type = string
