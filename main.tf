@@ -6,12 +6,13 @@ module "vpc" {
 
   vpc_cidr = var.vpc_cidr
 
-  public_subnet_1_cidr = var.public_subnet_1_cidr
-  public_subnet_2_cidr = var.public_subnet_2_cidr
+  availability_zones = var.availability_zones
 
-  private_subnet_1_cidr = var.private_subnet_1_cidr
-  private_subnet_2_cidr = var.private_subnet_2_cidr
+  public_subnet_cidrs = var.public_subnet_cidrs
 
-  availability_zone_1 = var.availability_zone_1
-  availability_zone_2 = var.availability_zone_2
-  }
+  private_subnet_cidrs = var.private_subnet_cidrs
+
+  enable_nat_gateway = var.enable_nat_gateway
+
+  additional_tags = {}
+}

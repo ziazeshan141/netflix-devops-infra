@@ -1,24 +1,31 @@
 variable "project_name" {
-  type        = string
+  type = string
 }
 
 variable "environment" {
-  type        = string
+  type = string
 }
 
 variable "aws_region" {
-  type        = string
+  type = string
 }
 
 variable "vpc_cidr" {
-  type        = string
+  type = string
 }
 
-variable "public_subnet_1_cidr" {}
-variable "public_subnet_2_cidr" {}
+variable "availability_zones" {
+  type = list(string)
+}
 
-variable "private_subnet_1_cidr" {}
-variable "private_subnet_2_cidr" {}
+variable "public_subnet_cidrs" {
+  type = list(string)
+}
 
-variable "availability_zone_1" {}
-variable "availability_zone_2" {}
+variable "private_subnet_cidrs" {
+  type = list(string)
+}
+
+variable "enable_nat_gateway" {
+  type = bool
+}

@@ -7,6 +7,6 @@ terraform {
     aws = {
       source  = "hashicorp/aws"
       version = "~> 5.0" # Pins major version 5.x while allowing minor updates
-     }
-   }
+    }
+  }
 }
