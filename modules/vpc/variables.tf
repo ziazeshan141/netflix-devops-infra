@@ -7,3 +7,8 @@ variable "private_subnet_1_cidr" {}
 variable "private_subnet_2_cidr" {}
 variable "availability_zone_1" {}
 variable "availability_zone_2" {}
+variable "additional_tags" {
+  description = "Additional tags to apply to VPC resources"
+  type        = map(string)
+  default     = {}
+}
