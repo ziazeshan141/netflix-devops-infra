@@ -36,3 +36,10 @@ module "eks" {
   min_size     = var.min_size
   max_size     = var.max_size
 }
+
+module "ecr" {
+  source = "./modules/ecr"
+
+  project_name = var.project_name
+  environment  = var.environment
+}

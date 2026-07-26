@@ -17,3 +17,10 @@ output "cluster_name" {
 output "cluster_endpoint" {
   value = module.eks.cluster_endpoint
 }
+
+module "ecr" {
+  source = "./modules/ecr"
+
+  project_name = var.project_name
+  environment  = var.environment
+}
