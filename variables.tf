@@ -29,3 +29,6 @@ variable "private_subnet_cidrs" {
 variable "enable_nat_gateway" {
   type = bool
 }
+
+variable "additional_tags" {
+  type = map(string)
