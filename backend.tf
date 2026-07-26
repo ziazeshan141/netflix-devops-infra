@@ -1,6 +1,6 @@
 terraform {
   backend "s3" {
-    bucket       = "netflix-devops-s3-state761"
+    bucket       = "netflix-devops-s3-state-047385030300-us-east-1-an"
     key          = "dev/terraform.tfstate"
     region       = "us-east-1"
     encrypt      = true
