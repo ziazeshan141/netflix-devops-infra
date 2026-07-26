@@ -1,3 +1,7 @@
+# --------------------------------------------------
+# Frontend Repository
+# --------------------------------------------------
+
 resource "aws_ecr_repository" "frontend" {
   name                 = "${var.project_name}-frontend"
   image_tag_mutability = "MUTABLE"
@@ -6,11 +10,18 @@ resource "aws_ecr_repository" "frontend" {
     scan_on_push = true
   }
 
-  tags = {
-    Project     = var.project_name
-    Environment = var.environment
+  encryption_configuration {
+    encryption_type = "AES256"
   }
+
+  tags = merge(var.additional_tags, {
+    Name = "${var.project_name}-frontend"
+  })
 }
+
+# --------------------------------------------------
+# Backend Repository
+# --------------------------------------------------
 
 resource "aws_ecr_repository" "backend" {
   name                 = "${var.project_name}-backend"
@@ -20,8 +31,54 @@ resource "aws_ecr_repository" "backend" {
     scan_on_push = true
   }
 
-  tags = {
-    Project     = var.project_name
-    Environment = var.environment
+  encryption_configuration {
+    encryption_type = "AES256"
   }
+
+  tags = merge(var.additional_tags, {
+    Name = "${var.project_name}-backend"
+  })
+}
+
+# --------------------------------------------------
+# Lifecycle Policy
+# Keep only the latest 10 images
+# --------------------------------------------------
+
+resource "aws_ecr_lifecycle_policy" "frontend" {
+  repository = aws_ecr_repository.frontend.name
+
+  policy = jsonencode({
+    rules = [{
+      rulePriority = 1
+      description  = "Keep last 10 images"
+      selection = {
+        tagStatus   = "any"
+        countType   = "imageCountMoreThan"
+        countNumber = 10
+      }
+      action = {
+        type = "expire"
+      }
+    }]
+  })
+}
+
+resource "aws_ecr_lifecycle_policy" "backend" {
+  repository = aws_ecr_repository.backend.name
+
+  policy = jsonencode({
+    rules = [{
+      rulePriority = 1
+      description  = "Keep last 10 images"
+      selection = {
+        tagStatus   = "any"
+        countType   = "imageCountMoreThan"
+        countNumber = 10
+      }
+      action = {
+        type = "expire"
+      }
+    }]
+  })
 }

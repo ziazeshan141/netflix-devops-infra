@@ -42,18 +42,6 @@ variable "max_size" {
   type = number
 }
 
-variable "cluster_role_arn" {
-  type = string
-}
-
-variable "node_role_arn" {
-  type = string
-}
-
-variable "cluster_security_group_id" {
-  type = string
-}
-
-variable "node_security_group_id" {
-  type = string
+variable "additional_tags" {
+  type = map(string)
 }

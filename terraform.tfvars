@@ -22,7 +22,7 @@ private_subnet_cidrs = [
 enable_nat_gateway = true
 
 additional_tags = {
-  Owner = "DevOps"
+  Owner = "Zeshan"
 }
 
 cluster_name = "netflix-eks"

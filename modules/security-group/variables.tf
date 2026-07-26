@@ -9,3 +9,7 @@ variable "environment" {
 variable "vpc_id" {
   type = string
 }
+
+variable "additional_tags" {
+  type = map(string)
+}
